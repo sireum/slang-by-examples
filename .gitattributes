@@ -1,0 +1,2 @@
+* text=auto !eol
+*.sc text eol=lf
