@@ -4,6 +4,15 @@ This repository holds Slang scripts designed for people familiar with
 programming to learn Slang quickly by looking at the scripts and
 experimenting with them.
 
+
+## Examples
+
+* [Boolean, String, and Basic Statements](src/00-boolean-string-basic-statements.sc)
+* [Integers and Reals](src/01-integers-reals.sc)
+
+
+## Setup
+
 To setup, install [Sireum Kekinian](https://github.com/sireum/kekinian)
 and execute the following in a terminal (assuming `SIREUM_HOME` is 
 set to Sireum's installation path):
