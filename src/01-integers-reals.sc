@@ -1,0 +1,50 @@
+// #Sireum
+import org.sireum._
+
+
+// Z (arbitrary-precision integer) Literals
+println(1) // can express numbers in [-2147483648, 2147483647]
+println(0xFF) // hexadecimal
+println(2l) // use l or L suffix for numbers smaller/larger numbers in [-9223372036854775808,  9223372036854775807]
+println(0xFFL)
+println(z"1000000000000000000000000000000000000000000000") // for any Z number
+println(z"2,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000") // can be separated by comma, underscore, or space (or mixed)
+println(z"3_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000")
+println(z"4 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000")
+
+println(Z.random)
+
+println(1 * 20L + 3 - z"10" / 2l % 10) // arithmetic operators
+
+
+// Z Comparisons
+assert(10l == 10)
+assert(11l != 10L)
+assert(10L < 100)
+assert(100 > z"10")
+assert(z"199" <= 0xFFl)
+assert(0xFFl >= z"199")
+
+
+// Range Integer Types
+@range(min = 0, max = 9) class Z0To9 // defines (checked) range integer type [0, 9]
+
+import Z0To9._ // import literal notation z0To9"..."
+
+assert(z0To9"3" * z0To9"2" == z0To9"6")
+// println(z0To9"10") // 10 is out of range; checked at compile-time (type checking)
+// println(z0To9"9" * z0To9"2") // 18 is out of range; checked at run-time (i.e., this produces runtime error)
+
+@range(min = 1) class Positive // defines arbitrary-precision positive integer type
+
+@range(max = -1) class Negative // defines arbitrary-precision positive integer type
+
+
+// Bit-vector Integer Types
+
+@bits(signed = F, width = 8) class Ubyte
+
+import Ubyte._
+
+assert(ubyte"-1" == ubyte"0xFF")
+assert((ubyte"1" << ubyte"3") == ubyte"0x8")
