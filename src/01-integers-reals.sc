@@ -31,7 +31,7 @@ assert(0xFFl >= z"199")
 
 import Z0To9._ // import literal notation z0To9"..."
 
-assert(z0To9"3" * z0To9"2" == z0To9"6")
+assert(z0To9"3" * z0To9"2" == z0To9"6") // available binary ops: + - * / % == != < <= > >=, unary op: -
 // println(z0To9"10") // 10 is out of range; checked at compile-time (type checking)
 // println(z0To9"9" * z0To9"2") // 18 is out of range; checked at run-time (i.e., this produces runtime error)
 
@@ -46,5 +46,20 @@ assert(z0To9"3" * z0To9"2" == z0To9"6")
 
 import Ubyte._
 
-assert(ubyte"-1" == ubyte"0xFF")
+assert(ubyte"-1" == ubyte"0xFF") // available binary ops: + - * / % == != < <= > >= << >>> >>, unary op: - ~
 assert((ubyte"1" << ubyte"3") == ubyte"0x8")
+
+
+// Notes: Slang runtime library defines range types: Z8, Z16, Z32, Z64, N, N8, N16, N18, N32, and N64,
+// and bitvector types: S8, S16, S32, S64, U8, U16, U18, U32, and U64; see
+// https://github.com/sireum/runtime/blob/master/library/shared/src/main/scala/org/sireum/BitsRangeTypes.scala
+
+
+// Floating-point Number Types, available binary ops: + - * / % == != < <= > >=, unary op: -
+val f1: F32 = 0.1f // 32-bit literal
+println(f32"0.2")  // 32-bit literal
+val f2: F64 = 0.1 + f64"10"  // 64-bit literals
+
+// Real Number Type, available binary ops: + - * / % == != < <= > >=, unary op: -
+val r: R = r"1.0"
+println(r / r"3")
