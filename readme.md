@@ -5,11 +5,11 @@ programming to learn Slang quickly by looking at the scripts and
 experimenting with them.
 
 
-## Examples
+## Read the Code
 
 * [Boolean, String, and Basic Statements](src/00-boolean-string-basic-statements.sc)
 * [Integers and Reals](src/01-integers-reals.sc)
-
+* [Sequences](src/02-sequences.sc)
 
 ## Setup
 
