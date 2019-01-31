@@ -1,5 +1,5 @@
-// #Sireum
-import org.sireum._
+// #Sireum          // this indicates this Scala script .sc file is a Slang script file
+import org.sireum._ // imports Slang standard library
 
 
 println("Hello World!") // print with a newline to stdout
@@ -32,17 +32,22 @@ b3 = (T simp_: F) == F // conditional-imply, assignment
 b4 = (T imp_: T imp_: F) == F // conditional-imply right-assoc
 
 
-/*
+println(
+  /* multi-line string interpolation */
+  s"""
 FAQs
 
-* Why `T` and `F` instead of just using true and false?
+* Why `T` and `F` instead of just using $T and $F?
 
   Shortcuts for truth table sub-language part of Slang (for pedagogical purposes); also, less is more (typing-wise).
 
 * Why `|^` for xor?
 
   `^` is reserved for the logical-and operator identifier in Slang proof context (e.g., contract expressions).
-  Also note that the capital letter `V` is also a reserved operator identifier for logical-or.
+  Also note that the capital letter `V` is also a reserved operator identifier for logical-or.""")
+
+println(/* multi-line string */
+  """
 
 * Why `imp_:` and `simp_:` for implication operator identifiers?
 
@@ -54,4 +59,4 @@ FAQs
   https://scala-lang.org/files/archive/spec/2.12/01-lexical-syntax.html#identifiers
 
   In the proof context, `->` and `==>` can be used for logical-implication and conditional-implication, respectively.
-*/
+""")
