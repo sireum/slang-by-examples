@@ -27,10 +27,11 @@ val b2 = (T imp_: T imp_: F) == F // logical-implication right-assoc, read-only 
 
 var b3: B = T && T == T // conditional-and (short-circuit), (mutable) variable definition
 var b4 = T || F == T // conditional-or
+assert(b1 && b2 && b3 && b4)
 
-b3 = (T simp_: F) == F // conditional-imply, assignment
-b4 = (T imp_: T imp_: F) == F // conditional-imply right-assoc
-
+b3 = (F simp_: F) == T // conditional-implication, assignment
+b4 = (F simp_: T simp_: F) == T // conditional-implication right-assoc
+assert(b3 && b4)
 
 println(
   /* multi-line string interpolation */
