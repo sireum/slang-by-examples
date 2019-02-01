@@ -12,6 +12,8 @@ experimenting with them.
 * [Sequences and Mutability](src/02-sequences-mutability.sc)
 * [Enum and Tuples](src/03-enum-tuples.sc)
 * [Blocks, Conditionals, and Loops](src/04-blocks-conditionals-loops.sc)
+* [Methods and Functions](src/05-methods-functions.sc)
+
 
 ## Setup
 
