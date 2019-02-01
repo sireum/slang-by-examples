@@ -5,8 +5,8 @@ import org.sireum._
 // Z (arbitrary-precision integer) Literals
 println(1) // can express numbers in [-2147483648, 2147483647]
 println(0xFF) // hexadecimal
-println(2l) // use l or L suffix for numbers smaller/larger numbers in [-9223372036854775808,  9223372036854775807]
-println(0xFFL)
+println(2L) // use l or L suffix for numbers smaller/larger numbers in [-9223372036854775808,  9223372036854775807]
+println(0xFFl)
 println(z"1000000000000000000000000000000000000000000000") // for any Z number
 println(z"2,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000") // can be separated by comma, underscore, or space (or mixed)
 println(z"3_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000")
@@ -53,6 +53,12 @@ assert((ubyte"1" << ubyte"3") == ubyte"0x8")
 // Notes: Slang runtime library defines range types: Z8, Z16, Z32, Z64, N, N8, N16, N18, N32, and N64,
 // and bitvector types: S8, S16, S32, S64, U8, U16, U18, U32, and U64; see
 // https://github.com/sireum/runtime/blob/master/library/shared/src/main/scala/org/sireum/BitsRangeTypes.scala
+
+
+// C (character)
+val c1: C = 'A'
+assert(c1 == '\u0041') // unicode
+assert(c1 + '\u0001' == 'B') // available binary ops: + - == != < <= > >= << >>> >> & | |^
 
 
 // Floating-point Number Types, available binary ops: + - * / % == != < <= > >=, unary op: -
