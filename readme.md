@@ -8,8 +8,10 @@ experimenting with them.
 ## Read the Code
 
 * [Boolean, String, and Basic Statements](src/00-boolean-string-basic-statements.sc)
-* [Integers and Reals](src/01-integers-reals.sc)
+* [Integers. Character, and Reals](src/01-integers-character-reals.sc)
 * [Sequences and Mutability](src/02-sequences-mutability.sc)
+* [Enum and Tuples](src/03-enum-tuples.sc)
+* [Blocks, Conditionals, and Loops](src/04-blocks-conditionals-loops.sc)
 
 ## Setup
 
