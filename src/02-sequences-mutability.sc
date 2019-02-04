@@ -42,16 +42,16 @@ assert(s2(1) == "b")
 
 // Non-zero indexing
 
-@range(min = 1, max = 10, index = true) class Z1To10 // index=true means to use min as the first index for sequences
+@range(min = 1, max = 10, index = T) class Z1To10 // index=true means to use min as the first index for sequences
 import Z1To10._
 val s4 = MS[Z1To10, String]("a", "b", "c")
 println(s4(z1To10"1"))
 assert(s4(z1To10"1") == "a" && s4(z1To10"2") == "b" && s4(z1To10"3") == "c")
 
-@range(min = -10, max = 10, index = true) class ZM10To10
-import ZM10To10._
-val s5 = IS[ZM10To10, String]("a", "b", "c")
-assert(s5(zM10To10"-10") == "a" && s5(zM10To10"-9") == "b" && s5(zM10To10"-8") == "c")
+@bits(min = -10, max = 10, index = T) class SM10To10
+import SM10To10._
+val s5 = IS[SM10To10, String]("a", "b", "c")
+assert(s5(sM10To10"-10") == "a" && s5(sM10To10"-9") == "b" && s5(sM10To10"-8") == "c")
 
 
 // Clone/copy semantics for assignments of mutable types

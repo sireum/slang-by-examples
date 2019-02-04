@@ -77,5 +77,5 @@ That is the reason why the changes to s1 and s2 are visible after sort were invo
 This is the only place in Slang where aliasing are introduced.
 It is required that mutable arguments have to be "separate"; that is, one argument mutable object should not be the same
 as or contained in another argument mutable object.
-This requirement will be checked in the future version of the Slang type checker.
+This requirement will be checked in the future version of the Slang static checker.
  */
