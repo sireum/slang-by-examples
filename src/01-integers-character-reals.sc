@@ -37,7 +37,7 @@ assert(z0To9"3" * z0To9"2" == z0To9"6") // available binary ops: + - * / % == !=
 
 @range(min = 1) class Positive // defines arbitrary-precision positive integer type
 
-@range(max = -1) class Negative // defines arbitrary-precision positive integer type
+@range(max = -1) class Negative // defines arbitrary-precision negative integer type
 
 
 // Bit-vector Integer Types
