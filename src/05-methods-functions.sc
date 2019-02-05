@@ -33,6 +33,28 @@ def stringEqual[T1, T2](o1: T1, o2: T2): B = { // method with type parameters (g
 println(stringEqual(ISZ(1, 2, 3), MSZ(1, 2, 3)))
 
 
+object Factorial {
+  @memoize def compute(n: Z): Z = { // @memoize caches output based on input and is pure (see below)
+                                    // its parameters and return type should be immutable
+    assume(n >= 0)
+    println(s"Computing $n!")
+    @pure def rec(i: Z): Z = { // nested (recursive) method
+                               // @pure means (observationally) side-effect free
+                               // purity will be checked by Slang static checker in the future
+      assert(0 <= i && i <= n) // rec can access variables in its outer scopes such as n
+      if (i == 0) {
+        return 1
+      } else {
+        return i * rec(i - 1)
+      }
+    }
+
+    return rec(n)
+  }
+}
+println(Factorial.compute(100))
+println(Factorial.compute(100)) // note: does not print "Computing 100!" the second time
+
 // Functions
 
 val absF: Z => Z =  // absF is a function that takes a Z value and returns a Z value
@@ -77,5 +99,6 @@ That is the reason why the changes to s1 and s2 are visible after sort were invo
 This is the only place in Slang where aliasing are introduced.
 It is required that mutable arguments have to be "separate"; that is, one argument mutable object should not be the same
 as or contained in another argument mutable object.
+The same applies between arguments and variables accessed from the method context.
 This requirement will be checked in the future version of the Slang static checker.
  */
