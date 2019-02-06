@@ -13,7 +13,7 @@ experimenting with them.
 * [Enum and Tuples](src/03-enum-tuples.sc)
 * [Blocks, Conditionals, and Loops](src/04-blocks-conditionals-loops.sc)
 * [Methods and Functions](src/05-methods-functions.sc)
-
+* [ADTs, Sigs, and Module](src/06-adts-sigs-module.sc)
 
 ## Setup
 
