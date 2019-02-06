@@ -6,7 +6,7 @@ import org.sireum._
 
 val x1 = Z.random
 
-{ // block is a sequence of statements with its own scope
+;{ // block is a sequence of statements with its own scope
   println("Inside block")
   val y = x1 + 1 // can refer to outside scope
   assert(y > x1)
@@ -36,6 +36,16 @@ if (x3 == 2) {
 
 
 val x4: Z = if (B.random) x3 else -x3 // conditional expression (no blocks)
+
+
+val x5: Z =
+  if (B.random) {                     // conditional block expression
+    println("5")
+    5
+  } else {
+    println("1")
+    6
+  }
 
 
 // Loops
