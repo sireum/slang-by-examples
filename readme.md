@@ -15,6 +15,7 @@ experimenting with them.
 * [Methods and Functions](src/05-methods-functions.sc)
 * [ADTs, Sigs, and Module](src/06-adts-sigs-module.sc)
 * [Pattern Matching and Mutability](src/07-pattern-matching.sc)
+* [String Template](src/08-string-template.sc)
 
 ## Setup
 
