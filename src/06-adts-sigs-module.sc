@@ -124,7 +124,7 @@ println(Items.Max)
 
 // Generics
 
-@sig trait Tree[T] {
+@sig sealed trait Tree[T] { // sealed means it can only be extended in this file (i.e., guaranteeing closed sub-types)
   def children: ISZ[Tree[T]]
   def data: T
 }
