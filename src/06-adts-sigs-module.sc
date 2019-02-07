@@ -72,3 +72,99 @@ println(fp1)
 println(fp2)
 fp1.column = -1
 assert(fp1 == fp2) // uses isEqual
+
+
+// Immutable interface
+
+@sig trait HasFoo {
+  def foo: Z
+}
+
+@sig trait HasBar {
+  def bar: Z
+}
+
+@sig trait HasBaz {
+  def baz: Z
+}
+
+@datatype class FooBar(val foo: Z, val bar: Z) extends HasFoo with HasBar with HasBaz {
+  def baz: Z = {
+    return bar
+  }
+}
+
+
+// Mutable interface
+
+@msig trait HasInc {
+  def inc(): Z
+}
+
+@record class ZContainer(var n: Z) extends HasInc {
+  def inc(): Z = {
+    n = n + 1
+    return n
+  }
+}
+
+
+// Module
+
+object Items {
+
+  val Min: Z = 1
+
+  var Max: Z = 100
+
+}
+
+println(Items.Max)
+
+
+// Generics
+
+@sig trait Tree[T] {
+  def children: ISZ[Tree[T]]
+  def data: T
+}
+
+object Tree {
+
+  @datatype class InNode[T](val children: ISZ[Tree[T]], val data: T) extends Tree[T]
+
+  @datatype class Leaf[T](val data: T) extends Tree[T] {
+    def children: ISZ[Tree[T]] = {
+      return ISZ()
+    }
+  }
+
+  def inNode[T](children: ISZ[Tree[T]], data: T): Tree[T] = {
+    return InNode(children, data)
+  }
+
+  def leaf[T](data: T): Tree[T] = {
+    return Leaf(data)
+  }
+
+}
+
+val t1 = Tree.InNode(ISZ[Tree[Z]](Tree.Leaf(5), Tree.Leaf(3)), 1)
+// note: Tree[Z] is required because Leaf(x: Z) returns Leaf[Z] (not Tree[Z])
+println(t1)
+
+val t2 = Tree.inNode(ISZ(Tree.leaf(5), Tree.leaf(2)), 1)
+println(t2)
+
+assert(t2 == t1(children = t1.children(1 ~> Tree.leaf(2))))
+
+
+// Hidden params
+
+@record class Record(x: Z, y: Z, @hidden z: Z) // z is not taken into account for == and .hash
+
+val r1 = Record(1, 2, 3)
+val r2 = Record(1, 2, 4)
+assert(r1 == r2 && r1.hash == r2.hash)
+println(r1)
+println(r2)
