@@ -50,6 +50,7 @@ assert(posYOf3(Foo(1, -2)).isEmpty)
 // Note: extracting a mutable object through pattern matching creates a copy
 
 @record class Cell(var data: Z, var left: MOption[Cell], var right: MOption[Cell])
+// note MOption, MNone, and MSome are mutable versions of Option, None, and Some which can contain mutable objects
 
 val c1 = Cell(1, MSome(Cell(0, MNone(), MNone())), MSome(Cell(2, MNone(), MNone())))
 val Cell(_, _, MSome(right)) = c1
