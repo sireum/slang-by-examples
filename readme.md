@@ -14,6 +14,7 @@ experimenting with them.
 * [Blocks, Conditionals, and Loops](src/04-blocks-conditionals-loops.sc)
 * [Methods and Functions](src/05-methods-functions.sc)
 * [ADTs, Sigs, and Module](src/06-adts-sigs-module.sc)
+* [Pattern Matching and Mutability](src/07-pattern-matching.sc)
 
 ## Setup
 
