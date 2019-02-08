@@ -16,6 +16,7 @@ experimenting with them.
 * [ADTs, Sigs, and Module](src/06-adts-sigs-module.sc)
 * [Pattern Matching and Mutability](src/07-pattern-matching.sc)
 * [String Template](src/08-string-template.sc)
+* [Extension](src/09-extension.sc)
 
 ## Setup
 
