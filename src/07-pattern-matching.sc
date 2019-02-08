@@ -49,7 +49,11 @@ assert(posYOf3(Foo(1, -2)).isEmpty)
 
 // Note: extracting a mutable object through pattern matching creates a copy
 
-@record class Cell(var data: Z, var left: MOption[Cell], var right: MOption[Cell])
+@msig trait HasData {
+  def data: Z
+}
+
+@record class Cell(var data: Z, var left: MOption[Cell], var right: MOption[Cell]) extends HasData
 // note MOption, MNone, and MSome are mutable versions of Option, None, and Some which can contain mutable objects
 
 val c1 = Cell(1, MSome(Cell(0, MNone(), MNone())), MSome(Cell(2, MNone(), MNone())))
@@ -63,3 +67,12 @@ c1 match {
     left.data = 3
     assert(c1.left.get.data == 0)
 }
+
+// Note: type refinement through pattern matching does not create a copy
+
+val c2: HasData = Cell(2, MNone(), MNone())
+
+c2 match {
+  case c2: Cell => c2.data = 1
+}
+assert(c2.data == 1)
