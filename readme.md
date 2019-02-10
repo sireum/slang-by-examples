@@ -18,10 +18,13 @@ experimenting with them.
 * [String Template](src/08-string-template.sc)
 * [Extension](src/09-extension.sc)
 
-## Setup
+## Prerequisite
 
-To setup, install [Sireum Kekinian](https://github.com/sireum/kekinian)
-and execute the following in a terminal (assuming `SIREUM_HOME` is 
+[Sireum Kekinian](https://github.com/sireum/kekinian) installed.
+
+## Using Sireum IVE
+
+Execute the following in a terminal (assuming `SIREUM_HOME` is 
 set to Sireum's installation path):
 
 * **macOS/Linux**
@@ -40,3 +43,24 @@ set to Sireum's installation path):
   
 Then, load the `slang-by-examples` directory in Sireum IVE, and
 read/edit/run the scripts.
+
+## Using Sireum CLI
+
+You can run the example from the command line, e.g.,:
+
+* **macOS/Linux**
+  
+  ```bash
+  ${SIREUM_HOME}/bin/sireum slang run src/00-boolean-string-basic-statements.sc
+  ```
+  
+* **Windows**
+
+  ```batch
+  %SIREUM_HOME%\bin\sireum.bat slang run src\00-boolean-string-basic-statements.sc
+  ```
+
+### Native Executable Generation
+  
+On macOS and Linux, you can additionally generate native executable of the scripts
+by adding `--native` as an option (`-n` for short).

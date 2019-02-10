@@ -1,3 +1,5 @@
 /.idea
 /slang-by-examples.iml
 /src/script.sc
+*.jar
+*.native
