@@ -17,6 +17,7 @@ experimenting with them.
 * [Pattern Matching and Mutability](src/07-pattern-matching.sc)
 * [String Template](src/08-string-template.sc)
 * [Extension](src/09-extension.sc)
+* [Universal Slang Shell Script](src/universal-slang-shell-script-example.cmd)
 
 ## Prerequisite
 
