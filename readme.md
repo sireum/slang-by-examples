@@ -17,7 +17,7 @@ experimenting with them.
 * [Pattern Matching and Mutability](src/07-pattern-matching.sc)
 * [String Template](src/08-string-template.sc)
 * [Extension](src/09-extension.sc)
-* [Universal Slang Shell Script](src/universal-slang-shell-script-example.cmd)
+* [**Slash**: a universal Slang shell script](src/slash.cmd)
 
 ## Prerequisite
 
@@ -64,4 +64,6 @@ You can run the example from the command line, e.g.,:
 ### Native Executable Generation
   
 On macOS and Linux, you can additionally generate native executable of the scripts
-by adding `--native` as an option (`-n` for short).
+by adding `--native` as an option (`-n` for short) if [GraalVM](http://graalvm.org)'s
+`native-image` is available in the `PATH` env var.
+ 
