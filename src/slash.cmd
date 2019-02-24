@@ -29,13 +29,13 @@ As illustrated in this example, Slash script uses CRLF (Windows) newline separat
 and its header consists of sh (lines 3-11) and batch (lines 13-18) scripts that run
 this file using the Slang script runner. Note that sh part should end with a hash (#).
 
-Slash script can be compiled to native code (.cmd.com) if
+Like Slang code, Slash script can be compiled to native code (.cmd.com) if
 GraalVM's native-image is available in the PATH env var.
 
 In the sh part, it detects if this script is already compiled to native and
-if the native binary is newer than this file (based on the files' last modified time),
-the native binary is called instead, thus offering no JVM boot up and code compilation
-overhead on subsequent uses.
+if the native binary is newer than this file (based on the files' last modified time);
+if so, the native binary is called instead, thus offering no JVM boot up and
+no code compilation overhead on subsequent uses.
  */
 
 println(s"Script home: ${Os.slashDir}")
