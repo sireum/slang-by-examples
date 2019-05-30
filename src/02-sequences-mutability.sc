@@ -27,7 +27,7 @@ assert(s1 -- ISZ("b", "c") == IS.create(1, "a")) // removing several elements, c
 // MS[I, E]: Mutable Sequence with index type I and element type E
 // Type I should be either Z, @bits, or @range types; type E can be either immutable or mutable
 
-val s2 = MSZ("a", "b", "c") // an Immutable Sequence of String indexed by Z
+val s2 = MSZ("a", "b", "c") // a Mutable Sequence of String indexed by Z
 
 println(s2)
 
