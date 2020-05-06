@@ -1,2 +1,3 @@
 * text=auto !eol
 *.sc text eol=lf
+*.cmd text eol=crlf
