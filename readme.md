@@ -18,10 +18,13 @@ experimenting with them.
 * [String Template](src/08-string-template.sc)
 * [Extension](src/09-extension.sc)
 * [**Slash**: a universal Slang shell script](src/slash.cmd)
+  * [A musical transcription transposer](src/transpose.cmd)
+
 
 ## Prerequisite
 
 [Sireum Kekinian](https://github.com/sireum/kekinian) installed.
+
 
 ## Using Sireum IVE
 
@@ -45,6 +48,7 @@ set to Sireum's installation path):
 Then, load the `slang-by-examples` directory in Sireum IVE, and
 read/edit/run the scripts.
 
+
 ## Using Sireum CLI
 
 You can run the example from the command line, e.g.,:
@@ -60,6 +64,7 @@ You can run the example from the command line, e.g.,:
   ```batch
   %SIREUM_HOME%\bin\sireum.bat slang run src\00-boolean-string-basic-statements.sc
   ```
+
 
 ### Native Executable Generation
   
