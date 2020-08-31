@@ -173,7 +173,7 @@ val (forceFlat, forceSharp, numArg, fileArg): (B, B, String, String) = {
 val num: Z = Z(numArg) match {
   case Some(n) => n
   case _ =>
-    eprintln(s"Expecting a number for the first argument, but found '${Os.cliArgs(0)}'")
+    eprintln(s"Expecting a number for the first argument, but found '$numArg'")
     Os.exit(-1)
     halt("")
 }
