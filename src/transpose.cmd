@@ -129,23 +129,21 @@ object Note {
 
 }
 
-import Note.Key
-
-@datatype class Note(key: Key.Type, octave: Z) {
+@datatype class Note(key: Note.Key.Type, octave: Z) {
   override def string: String = {
     val r: String = key match {
-      case Key.C => s"C${octave}"
-      case Key.Cs => s"C${octave}#"
-      case Key.D => s"D${octave}"
-      case Key.Ds => s"D${octave}#"
-      case Key.E => s"E${octave}"
-      case Key.F => s"F${octave}"
-      case Key.Fs => s"F${octave}#"
-      case Key.G => s"G${octave}"
-      case Key.Gs => s"G${octave}#"
-      case Key.A => s"A${octave}"
-      case Key.As => s"A${octave}#"
-      case Key.B => s"B${octave}"
+      case Note.Key.C => s"C$octave"
+      case Note.Key.Cs => s"C$octave#"
+      case Note.Key.D => s"D$octave"
+      case Note.Key.Ds => s"D$octave#"
+      case Note.Key.E => s"E$octave"
+      case Note.Key.F => s"F$octave"
+      case Note.Key.Fs => s"F$octave#"
+      case Note.Key.G => s"G$octave"
+      case Note.Key.Gs => s"G$octave#"
+      case Note.Key.A => s"A$octave"
+      case Note.Key.As => s"A$octave#"
+      case Note.Key.B => s"B$octave"
     }
     return r
   }
@@ -184,14 +182,14 @@ if (!file.exists) {
   Os.exit(-1)
 }
 
-val keys: ISZ[Key.Type] = Key.elements
+val keys: ISZ[Note.Key.Type] = Note.Key.elements
 val octaveShift = num / keys.size
 val keyShift: Z =
   if (num < 0) ((num * -1) % keys.size) * -1
   else num % keys.size
 
 val transposedNotes: ISZ[Note] = {
-  val r = MSZ.create[Note](keys.size, Note(Key.C, 0))
+  val r = MSZ.create[Note](keys.size, Note(Note.Key.C, 0))
   for (i <- 0 until keys.size) {
     var n = i + keyShift
     var octave: Z = 0
@@ -218,34 +216,32 @@ var natNotes = HashSet.empty[String]
 var nonNatNotes = HashSet.empty[String]
 
 def outputNote(note: Note): Unit = {
-  def isUp(): B = {
-    if (forceSharp) {
-      return T
-    }
-    if (forceFlat) {
-      return F
-    }
-    prevNoteOpt match {
-      case Some(prevNote) => 
-        if (prevNote == note) {
-          prevNoteUp
-        } else {
-          return computeNum(note) >= computeNum(prevNote)
-        }
-      case _ => return T
-    }
-  }
   def outputOctave(): Unit = {
     for (c <- conversions.String.toCis(note.octave.string)) {
       output = output :+ c
     }
   }
-  val up = isUp()
+  val up: B =
+    if (forceSharp) {
+      T
+    } else if (forceFlat) {
+      F
+    } else {
+      prevNoteOpt match {
+        case Some(prevNote) =>
+          if (prevNote == note) {
+            prevNoteUp
+          } else {
+            computeNum(note) >= computeNum(prevNote)
+          }
+        case _ => T
+      }
+    }
   note.key match {
-    case Key.C =>
+    case Note.Key.C =>
       output = output :+ 'C'
       outputOctave()
-    case Key.Cs =>
+    case Note.Key.Cs =>
       if (up) {
         output = output :+ 'C'
         outputOctave()
@@ -255,10 +251,10 @@ def outputNote(note: Note): Unit = {
         outputOctave()
         output = output :+ 'b'
       }
-    case Key.D =>
+    case Note.Key.D =>
       output = output :+ 'D'
       outputOctave()
-    case Key.Ds =>
+    case Note.Key.Ds =>
       if (up) {
         output = output :+ 'D'
         outputOctave()
@@ -268,13 +264,13 @@ def outputNote(note: Note): Unit = {
         outputOctave()
         output = output :+ 'b'
       }
-    case Key.E =>
+    case Note.Key.E =>
       output = output :+ 'E'
       outputOctave()
-    case Key.F =>
+    case Note.Key.F =>
       output = output :+ 'F'
       outputOctave()
-    case Key.Fs =>
+    case Note.Key.Fs =>
       if (up) {
         output = output :+ 'F'
         outputOctave()
@@ -284,10 +280,10 @@ def outputNote(note: Note): Unit = {
         outputOctave()
         output = output :+ 'b'
       }
-    case Key.G =>
+    case Note.Key.G =>
       output = output :+ 'G'
       outputOctave()
-    case Key.Gs =>
+    case Note.Key.Gs =>
       if (up) {
         output = output :+ 'G'
         outputOctave()
@@ -297,10 +293,10 @@ def outputNote(note: Note): Unit = {
         outputOctave()
         output = output :+ 'b'
       }
-    case Key.A =>
+    case Note.Key.A =>
       output = output :+ 'A'
       outputOctave()
-    case Key.As =>
+    case Note.Key.As =>
       if (up) {
         output = output :+ 'A'
         outputOctave()
@@ -310,7 +306,7 @@ def outputNote(note: Note): Unit = {
         outputOctave()
         output = output :+ 'b'
       }
-    case Key.B =>
+    case Note.Key.B =>
       output = output :+ 'B'
       outputOctave()
   }
@@ -393,7 +389,7 @@ def nonNeg(): Z = {
   }
   Z(conversions.String.fromCis(cs)) match {
     case Some(n) if n >= 0 => return n
-    case s =>
+    case _ =>
       if (cs.isEmpty) {
         halt(error(s"Expecting a non-negative number, but found nothing"))
       } else {
@@ -404,21 +400,21 @@ def nonNeg(): Z = {
 
 def note(): Note = {
   assert(!done())
-  val key: Key.Type = chars(i) match {
-    case c"C" => Key.C
-    case c"D" => Key.D
-    case c"E" => Key.E
-    case c"F" => Key.F
-    case c"G" => Key.G
-    case c"A" => Key.A
-    case c"B" => Key.B
-    case c"c" => Key.C
-    case c"d" => Key.D
-    case c"e" => Key.E
-    case c"f" => Key.F
-    case c"g" => Key.G
-    case c"a" => Key.A
-    case c"b" => Key.B
+  val key: Note.Key.Type = chars(i) match {
+    case c"C" => Note.Key.C
+    case c"D" => Note.Key.D
+    case c"E" => Note.Key.E
+    case c"F" => Note.Key.F
+    case c"G" => Note.Key.G
+    case c"A" => Note.Key.A
+    case c"B" => Note.Key.B
+    case c"c" => Note.Key.C
+    case c"d" => Note.Key.D
+    case c"e" => Note.Key.E
+    case c"f" => Note.Key.F
+    case c"g" => Note.Key.G
+    case c"a" => Note.Key.A
+    case c"b" => Note.Key.B
     case c => halt(error(s"Expecting a note, but found '$c'"))
   }
   i = i + 1
