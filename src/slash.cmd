@@ -42,11 +42,20 @@ println(s"Script home: ${Os.slashDir}")
 println(s"CLI args: ${Os.cliArgs}")
 println(s"Current working directory: ${Os.cwd}")
 
+val foo = Os.cwd / "a d" / "foo.txt"
 if (Os.kind == Os.Kind.Win) {
-  Os.proc(ISZ("cmd", "/c", "dir")).console.run()
+  proc"cmd /c dir".console.run() // spawn a process, command is space-separated; use ␣ for denoting a space char
+  proc"md a␣d".console.run()
+  foo.write("foo")
+  proc"type $foo".console.run()
 } else {
-  Os.proc(ISZ("ls", "-lah")).console.run()
+  proc"ls -lah".console.run()
+  proc"mkdir a␣d".console.run()
+  foo.write("foo")
+  proc"cat $foo".console.run()
 }
+foo.up.removeAll()
+println()
 
 /*
 For more examples, see:
