@@ -45,9 +45,9 @@ println(s"Current working directory: ${Os.cwd}")
 val foo = Os.cwd / "a d" / "foo.txt"
 if (Os.kind == Os.Kind.Win) {
   proc"cmd /c dir".console.run() // spawn a process, command is space-separated; use ␣ for denoting a space char
-  proc"md a␣d".console.run()
+  proc"cmd /c md a␣d".console.run()
   foo.write("foo")
-  proc"type $foo".console.run()
+  proc"cmd /c type $foo".console.run()
 } else {
   proc"ls -lah".console.run()
   proc"mkdir a␣d".console.run()
