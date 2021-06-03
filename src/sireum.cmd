@@ -38,7 +38,7 @@ val javaArgs = ISZ[ST](
 ) ++ (for (arg <- Os.cliArgs) yield st"$arg")
 
 
-val javaArgsFile = Os.home / "Temp" / "java-args"
+val javaArgsFile = Os.temp()
 javaArgsFile.writeOver(st"${(javaArgs, "\n")}".render)
 javaArgsFile.removeOnExit()
 
