@@ -9,7 +9,7 @@ In general, extension is the Slang mechanism to use "native" library when Slang 
 (e.g., Javascript or C).
  */
 
-@ext("MyExtImpl") object extension { // all methods are forwarded to MyExtImpl module which is implemented in Scala
+@ext("MyExtImpl") object extension { // all methods are forwarded to MyExtImpl
   def hello(): Unit = $
 }
 
@@ -19,7 +19,13 @@ extension.hello()
   def repeat[T](o: T, n: Z): Unit = $
 }
 
-object extension2_Ext {  // extension2 is forwarded here (since Slang is Scala)
+object MyExtImpl {  // extension is forwarded here (since Slang is Scala)
+  def hello(): Unit = {
+    println("Hello world!")
+  }
+}
+
+object extension2_Ext {  // extension2 is forwarded here
   def repeat[T](o: T, n: Z): Unit = {
     for (_ <- 0 until n) {
       print(o)

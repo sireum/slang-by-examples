@@ -21,7 +21,7 @@ assert("0" +: s1 :+ "d" == ISZ("0", "a", "b") ++ ISZ("c", "d")) // prepend (+:) 
 
 assert(s1 - "a" == ISZ("b", "c")) // removing an element
 
-assert(s1 -- ISZ("b", "c") == IS.create(1, "a")) // removing several elements, creation with size & default
+assert(s1 -- ISZ("b", "c") == ISZ.create(1, "a")) // removing several elements, creation with size & default
 
 
 // MS[I, E]: Mutable Sequence with index type I and element type E
@@ -35,7 +35,8 @@ println(s2)
 
 s2(0) = "c" // destructive update
 
-assert(s2(1 ~> "c") == MS.create(3, "c")) // Note: false positive from IntelliJ Scala 2018.3.5
+assert(s2(1 ~> "c") == MSZ.create(3, "c")) // Note: false positive from IntelliJ Scala 2018.3.5
+assert(MSZ.create(3, "c") == s2(1 ~> "c"))
 
 assert(s2(1) == "b")
 

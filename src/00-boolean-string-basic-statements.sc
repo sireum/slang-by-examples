@@ -22,15 +22,15 @@ assert(T | F == T, "Assertion error message") // logical-or, assertion with erro
 assume(T |^ F == T) // logical-xor, assumption
 assume(T |^ T == F, "Assumption error message") // assumption with error message
 
-val b1: B = (T imply_: F) == F // logical-implication, read-only variable definition with explicit type B
-val b2 = (T imply_: T imply_: F) == F // logical-implication right-assoc, read-only variable definition with type inference
+val b1: B = (T ->: F) == F // logical-implication, read-only variable definition with explicit type B
+val b2 = (T ->: T ->: F) == F // logical-implication right-assoc, read-only variable definition with type inference
 
 var b3: B = T && T == T // conditional-and (short-circuit), (mutable) variable definition
 var b4 = T || F == T // conditional-or
 assert(b1 && b2 && b3 && b4)
 
-b3 = (F simply_: F) == T // conditional-implication, assignment
-b4 = (F simply_: T simply_: F) == T // conditional-implication right-assoc
+b3 = (F -->: F) == T // conditional-implication, assignment
+b4 = (F -->: T -->: F) == T // conditional-implication right-assoc
 assert(b3 && b4)
 
 println(

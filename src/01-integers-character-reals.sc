@@ -6,7 +6,7 @@ import org.sireum._
 println(1) // can express numbers in [-2147483648, 2147483647]
 println(0xFF) // hexadecimal
 println(2L) // use l or L suffix for numbers smaller/larger numbers in [-9223372036854775808,  9223372036854775807]
-println(0xFFl)
+println(0xFFL)
 println(z"1000000000000000000000000000000000000000000000") // for any Z number
 println(z"2,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000") // can be separated by comma, underscore, or space (or mixed)
 println(z"3_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000")
@@ -14,16 +14,16 @@ println(z"4 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000")
 
 println(Z.random)
 
-println(1 * 20L + 3 - z"10" / 2l % 10) // arithmetic operators
+println(1 * 20L + 3 - z"10" / 2L % 10) // arithmetic operators
 
 
 // Z Comparisons
-assert(10l == 10)
-assert(11l != 10L)
+assert(10L == 10)
+assert(11L != 10L)
 assert(10L < 100)
 assert(100 > z"10")
-assert(z"199" <= 0xFFl)
-assert(0xFFl >= z"199")
+assert(z"199" <= 0xFFL)
+assert(0xFFL >= z"199")
 
 
 // Range Integer Types

@@ -18,6 +18,7 @@ experimenting with them.
 * [String Template](src/08-string-template.sc)
 * [Extension](src/09-extension.sc)
 * [**Slash**: a universal Slang shell script](src/slash.cmd)
+  * [Spawning a process](src/sireum.cmd)
   * [A musical transcription transposer](src/transpose.cmd)
 
 
@@ -35,14 +36,16 @@ set to Sireum's installation path):
 
   ```bash
   git clone https://github.com/sireum/slang-by-examples
-  ${SIREUM_HOME}/bin/sireum tools ivegen -n slang-by-examples .
+  cd slang-by-examples
+  ${SIREUM_HOME}/bin/sireum proyek ive .
   ```
 
 * **Windows**
 
   ```batch
   git clone https://github.com/sireum/slang-by-examples
-  %SIREUM_HOME%\bin\sireum tools ivegen -n slang-by-examples .
+  cd slang-by-examples
+  %SIREUM_HOME%\bin\sireum proyek ive .
   ```
   
 Then, load the `slang-by-examples` directory in Sireum IVE, and
