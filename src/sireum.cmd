@@ -21,11 +21,7 @@ import org.sireum._
 val home = Os.slashDir.up.canon
 val version = GitHub.repo("sireum", "kekinian").releases.take(1).toISZ(0).name
 
-println(s"Loading Sireum v$version")
-var deps = ISZ[CoursierFileInfo]()
-for (cif <- Coursier.fetch(ISZ(s"org.sireum.kekinian::cli:$version"))) {
-  deps = deps :+ cif
-}
+val deps = Coursier.fetch(ISZ(s"org.sireum.kekinian::cli:$version"))
 
 val javaArgs = ISZ[ST](
   st"-classpath",
@@ -37,4 +33,5 @@ val javaArgsFile = Os.temp()
 javaArgsFile.writeOver(st"${(javaArgs, "\n")}".render)
 javaArgsFile.removeOnExit()
 
-proc"${Os.path(Os.env("JAVA_HOME").get) / "bin" / (if (Os.isWin) "java.exe" else "java") } @$javaArgsFile".console.runCheck()
+val java = Os.path(Os.env("JAVA_HOME").get) / "bin" / (if (Os.isWin) "java.exe" else "java")
+proc"$java @$javaArgsFile".console.runCheck()
