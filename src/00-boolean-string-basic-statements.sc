@@ -50,7 +50,7 @@ FAQs
 println(/* multi-line string */
   """
 
-* Why `imp_:` and `simp_:` for implication operator identifiers?
+* Alternatives for `->:` and `-->:` are `imp_:` and `simp_:`.
 
   Scala recognizes right-associative operator identifier if it ends with a colon (`:`).
   To make sure implications have lower precedence than `&` and `|`, a letter is used as the first character of the
@@ -58,6 +58,4 @@ println(/* multi-line string */
 
   https://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations
   https://scala-lang.org/files/archive/spec/2.12/01-lexical-syntax.html#identifiers
-
-  In the proof context, `->` and `==>` can be used for logical-implication and conditional-implication, respectively.
 """)

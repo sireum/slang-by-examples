@@ -18,14 +18,10 @@ exit /B %errorlevel%
 
 import org.sireum._
 
-val version: String = Os.cliArgs match {
-  case ISZ(v) => v
-  case _ => GitHub.repo("sireum", "kekinian").releases.take(1).toISZ(0).name
-}
 val home = Os.slashDir.up.canon
+val version = GitHub.repo("sireum", "kekinian").releases.take(1).toISZ(0).name
 
 println(s"Loading Sireum v$version")
-
 var deps = ISZ[CoursierFileInfo]()
 for (cif <- Coursier.fetch(ISZ(s"org.sireum.kekinian::cli:$version"))) {
   deps = deps :+ cif
@@ -36,7 +32,6 @@ val javaArgs = ISZ[ST](
   st"${(for (dep <- deps) yield dep.path, Os.pathSep)}",
   st"org.sireum.Sireum"
 ) ++ (for (arg <- Os.cliArgs) yield st"$arg")
-
 
 val javaArgsFile = Os.temp()
 javaArgsFile.writeOver(st"${(javaArgs, "\n")}".render)
