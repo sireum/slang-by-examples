@@ -46,7 +46,7 @@ assert(z0To9"3" * z0To9"2" == z0To9"6") // available binary ops: + - * / % == !=
 
 import Ubyte._
 
-assert(ubyte"-1" == ubyte"0xFF") // available binary ops: + - * / % == != < <= > >= << >>> >>, unary op: - ~
+assert(ubyte"-1" == ubyte"0xFF") // available binary ops: + - * / % == != < <= > >= << >>> >> & | |^, unary op: - ~
 assert((ubyte"1" << ubyte"3") == ubyte"0x8")
 
 
