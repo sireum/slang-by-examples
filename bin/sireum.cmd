@@ -18,11 +18,10 @@ exit /B %errorlevel%
 
 import org.sireum._
 
-val home = Os.slashDir.up.canon
 val version = GitHub.repo("sireum", "kekinian").releases.take(1).toISZ(0).name
 
 println(s"Loading Sireum v$version ...")
-val deps = Coursier.fetch(ISZ(s"org.sireum.kekinian::cli:$version"))
+val deps = Coursier.fetch(Sireum.scalaVer, ISZ(s"org.sireum.kekinian::cli:$version"))
 println()
 
 val javaArgs = ISZ[ST](

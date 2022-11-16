@@ -17,9 +17,9 @@ experimenting with them.
 * [Pattern Matching and Mutability](src/07-pattern-matching.sc)
 * [String Template](src/08-string-template.sc)
 * [Extension](src/09-extension.sc)
-* [**Slash**: a universal Slang shell script](src/slash.cmd)
-  * [Spawning a process](src/sireum.cmd)
-  * [A musical transcription transposer](src/transpose.cmd)
+* [**Slash**: a universal Slang shell script](bin/slash.cmd)
+  * [Spawning a process](bin/sireum.cmd)
+  * [A musical transcription transposer](bin/transpose.cmd)
 
 
 ## Prerequisite
