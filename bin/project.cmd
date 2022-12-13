@@ -27,7 +27,10 @@ val example = Module(
   subPathOpt = None(),
   deps = ISZ(),
   targets = ISZ(Target.Jvm),
-  ivyDeps = ISZ("org.sireum.kekinian::library:"),
+  ivyDeps = ISZ(
+    "org.sireum.kekinian::library:",
+    "org.creativescala::doodle-image:"
+  ),
   sources = ISZ("."),
   resources = ISZ(),
   testSources = ISZ(),

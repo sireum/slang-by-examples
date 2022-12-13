@@ -4,3 +4,5 @@
 *.jar
 *.cmd.com
 *.native
+/chessboard.png
+/out

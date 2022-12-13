@@ -21,6 +21,15 @@ experimenting with them.
   * [Spawning a process](bin/sireum.cmd)
   * [A musical transcription transposer](bin/transpose.cmd)
 
+### Doodle
+
+[DoodleExample.scala](src/DoodleExample.scala) is a Slang port of the Doodle quick example available at
+https://creativescala.github.io/doodle.
+
+It is a larger Slang extension example to integrate an existing library:
+  * [Doodle.scala](src/Doodle.scala): Doodle Image API adapted to Slang
+  * [Doodle_Ext.scala](src/Doodle_Ext.scala): Doodle Slang extension to call Doodle library for rendering Images using Java2D.
+    
 
 ## Prerequisite
 
@@ -68,6 +77,35 @@ You can run the example from the command line, e.g.,:
   %SIREUM_HOME%\bin\sireum.bat slang run src\00-boolean-string-basic-statements.sc
   ```
 
+### Running Doodle Example Using Sireum Proyek
+
+* **macOS/Linux**
+
+  ```bash
+  ${SIREUM_HOME}/bin/sireum proyek run . DoodleExample
+  ```
+
+* **Windows**
+
+  ```batch
+  %SIREUM_HOME%\bin\sireum.bat proyek run . DoodleExample
+  ```
+
+### Creating and Running Doodle Example Uber Jar
+
+* **macOS/Linux**
+
+  ```bash
+  ${SIREUM_HOME}/bin/sireum proyek assemble --jar doodle-example --main DoodleExample --uber .
+  out/slang-by-examples/assemble/doodle-example.jar.bat
+  ```
+
+* **Windows**
+
+  ```batch
+  %SIREUM_HOME%\bin\sireum.bat proyek assemble --jar doodle-example --main DoodleExample --uber .
+  out\slang-by-examples\assemble\doodle-example.jar.bat
+  ```
 
 ### Native Executable Generation
   
