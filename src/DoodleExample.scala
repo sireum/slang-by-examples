@@ -24,13 +24,13 @@ object DoodleExample extends App {
 
   def main(args: ISZ[String]): Z = {
 
-    val blackSquare = Image.square(30d).fillColor(Color.black)
+    val blackShape = Image.square(30d).fillColor(Color.black)
 
-    val redSquare = Image.square(30d).fillColor(Color.red)
+    val redShape = Image.square(30d).fillColor(Color.red)
 
-    val twoByTwo = redSquare.
-      beside(blackSquare).
-      above(blackSquare.beside(redSquare))
+    val twoByTwo = redShape.
+      beside(blackShape).
+      above(blackShape.beside(redShape))
 
     val fourByFour = twoByTwo.
       beside(twoByTwo).
@@ -44,10 +44,11 @@ object DoodleExample extends App {
     chessboard.draw()
     println("done!")
 
-    val p = Os.cwd / "chessboard.png"
+    val p = Os.cwd / "board.png"
     print(s"Writing to $p ... ")
-    chessboard.writeTo(Os.cwd / "chessboard.png")
+    chessboard.writeTo(Os.cwd / "board.png")
     println("done!")
+
     pause("Press enter to exit ...")
     return 0
   }
