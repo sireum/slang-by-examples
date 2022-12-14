@@ -1,7 +1,7 @@
 # Slang by Examples
 
-This repository holds Slang scripts designed for people familiar with
-programming to learn Slang quickly by reading the scripts and
+This repository holds Slang scripts and programs designed for people familiar with
+programming to learn Slang quickly by reading the code and
 experimenting with them.
 
 
