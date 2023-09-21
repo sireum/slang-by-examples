@@ -44,13 +44,14 @@ FAQs
 
 * Why `|^` for xor?
 
-  `^` is reserved for the logical-and operator identifier in Slang proof context (e.g., contract expressions).
-  Also note that the capital letter `V` is also a reserved operator identifier for logical-or.""")
+  `^` is reserved for the logical-and operator identifier in Logika v3 proof context (e.g., contract expressions).
+  Also note that the capital letter `V` is also a reserved operator identifier for logical-or.
+  Logika v3 uses the new Slang runtime library so the `^` character is reserved for backward compatibility.""")
 
 println(/* multi-line string */
   """
 
-* Alternatives for `->:` and `-->:` are `imp_:` and `simp_:`.
+* Alternatives for `->:` and `-->:` are `imply_:` and `simply_:`.
 
   Scala recognizes right-associative operator identifier if it ends with a colon (`:`).
   To make sure implications have lower precedence than `&` and `|`, a letter is used as the first character of the
