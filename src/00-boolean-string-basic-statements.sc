@@ -51,11 +51,11 @@ FAQs
 println(/* multi-line string */
   """
 
-* Alternatives for `->:` and `-->:` are `imply_:` and `simply_:`.
+* Alternatives for `->:` and `-->:` are `__>:` and `___>:`.
 
   Scala recognizes right-associative operator identifier if it ends with a colon (`:`).
-  To make sure implications have lower precedence than `&` and `|`, a letter is used as the first character of the
-  identifier, which necessitates the use of underscore (`_`) before the colon; see:
+  To make sure implications have lower precedence than `&` and `|`, an underscore (`_`) is used as the first character
+  of the identifier, which necessitates the use of another `_` before the colon; see:
 
   https://scala-lang.org/files/archive/spec/2.12/06-expressions.html#infix-operations
   https://scala-lang.org/files/archive/spec/2.12/01-lexical-syntax.html#identifiers
